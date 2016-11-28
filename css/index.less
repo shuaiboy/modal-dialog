@@ -1,0 +1,62 @@
+*{
+	padding:0;
+	margin:0;
+	font-size:12px;
+}
+
+.clear{
+	*zoom: 1;
+	&:after{
+		content:'';
+		display: block;
+		height:0;
+		clear: both;
+	}
+}
+
+.modal-dialog{
+	position: fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+
+	&-bg{
+		position: absolute;
+		left:0;
+		top:0;
+		width:100%;
+		height:100%;
+		background: rgba(0, 0, 0, .5) ;
+	}
+
+	&-body{
+		width: 800px;
+		height:600px;
+		position: absolute;
+		top:50%;
+		left:50%;
+		margin-left:-400px;
+		margin-top:-300px;
+		background: #2C98FC;
+
+		&-head{
+			height:60px;
+			line-height:60px;
+			padding:0 15px;
+			font-size:18px;
+
+			a&-full{
+				display: inline-block;
+				float:right;
+
+			}
+		}
+
+		&-con{
+			padding:5px 15px;
+			background:#fff;
+			min-height:540px;
+		}
+	}
+}
