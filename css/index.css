@@ -25,6 +25,8 @@
   top: 0;
   width: 100%;
   height: 100%;
+  background: #000;
+  filter: alpha(opacity=50);
   background: rgba(0, 0, 0, 0.5);
 }
 .modal-dialog-body {
@@ -35,13 +37,13 @@
   left: 50%;
   margin-left: -400px;
   margin-top: -300px;
-  background: #2C98FC;
 }
 .modal-dialog-body-head {
   height: 60px;
   line-height: 60px;
   padding: 0 15px;
   font-size: 18px;
+  background: #2C98FC;
 }
 a.modal-dialog-body-head-full {
   display: inline-block;
@@ -50,5 +52,6 @@ a.modal-dialog-body-head-full {
 .modal-dialog-body-con {
   padding: 5px 15px;
   background: #fff;
+  height: 540px;
   min-height: 540px;
 }

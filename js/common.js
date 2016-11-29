@@ -20,7 +20,20 @@ var eventUtils = {
 	},
 
 	getEvent: function(event){
-		event = event || window.event ;
+		var event = event || window.event ;
 		return event ;
+	},
+
+	getTarget: function(e){
+		var event = eventUtils.getEvent(e) ;
+		var target = event.target || event.srcElement ;
+		return target;
+	}
+}
+
+function getWindowInfo(){
+	return {
+		width: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+		height: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
 	}
 }

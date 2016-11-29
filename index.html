@@ -20,11 +20,19 @@
 		</div>
 	</div> -->
 
+	<button onclick="show()">显示</button>
+
 	<script type="text/javascript" src="./js/common.js"></script>
 	<script type="text/javascript" src="./js/modalDialog.js"></script>
 	<script type="text/javascript">
 		var a = new modalDialog() ;
 		a.show('title', '<h1>ddd</h1>') ;
+		function show(){
+			a.show('这里是标题', '<h1>这里是内容</h1>') ;
+		}
+
+		//window.screen.availHeight
+		//window.screen.availWidth
 	</script>
 
 </body>
