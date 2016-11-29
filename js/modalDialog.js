@@ -19,6 +19,8 @@ function modalDialog(args){
 		modalDialogBodyHeadFull.appendChild(document.createTextNode('放大')) ;
 
 
+		eventUtils.addHandler(modalDialogBodyHeadFull, 'click', _this._full) ;
+
 
 		modalDialog.appendChild(modalDialogBg) ;
 		modalDialog.appendChild(modalDialogBody) ;
@@ -30,20 +32,54 @@ function modalDialog(args){
 
 		_this.modalDialogBodyHeadTitle = modalDialogBodyHeadTitle ;
 		_this.modalDialogBodyCon = modalDialogBodyCon ;
-	}
-
-	_this.close = function(){
-
+		_this.modalDialogBody = modalDialogBody ;
 	}
 
 	//放大
 	_this._full = function(){
+		var wWidth = window.innerWidth;
+		var wHeight = window.innerHeight ;
 
+		//保存当前宽高， 在缩小的时候使用
+		_this.bodyWidth = 800;
+		_this.bodyHeight = 600;
+
+		var styles = {
+			width: wWidth + 'px',
+			height: wHeight + 'px',
+			left: 0,
+			top: 0,
+			marginLeft: 0,
+			marginTop: 0
+		} ;
+		for(var item in styles){
+			_this.modalDialogBody.style[item] = styles[item] ;
+		}
+		_this.modalDialogBodyCon.style.minHeight = (wHeight - 60) + 'px';
+
+		this.innerHTML = '缩小' ;
+		eventUtils.removeHandler(this, 'click', _this._full) ;
+		eventUtils.addHandler(this, 'click', _this._portion) ;
 	}
 
 	//缩小
 	_this._portion = function(){
+		var styles = {
+			width: _this.bodyWidth + 'px',
+			height: _this.bodyHeight + 'px',
+			left: '50%',
+			top: '50%',
+			marginLeft: -(_this.bodyWidth/2) + 'px',
+			marginTop: -(_this.bodyHeight/2) + 'px'
+		} ;
+		for(var item in styles){
+			_this.modalDialogBody.style[item] = styles[item];
+		}
+		_this.modalDialogBodyCon.style.minHeight = (_this.bodyHeight - 60) + 'px';
 
+		this.innerHTML = '放大';
+		eventUtils.removeHandler(this, 'click', _this._portion) ;
+		eventUtils.addHandler(this, 'click', _this._full) ;
 	}
 
 	this.show = function(title, content){
@@ -51,6 +87,10 @@ function modalDialog(args){
 		_this.modalDialogBodyCon.innerHTML = content ;
 
 		//执行显示
+	}
+
+	_this.close = function(){
+
 	}
 
 	this.init() ;
